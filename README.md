@@ -2,4 +2,6 @@
 
 A no-fuss CLI music player.
 
-Run `> python music.py <folderpath>` to play all your songs.
+`pip install pygame`
+
+and run `python music.py <folderpath>` to play all your songs.
