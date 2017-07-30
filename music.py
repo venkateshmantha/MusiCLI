@@ -1,5 +1,8 @@
 import os,random,sys
-from pygame import *
+import pygame
+
+SONG_END = pygame.USEREVENT + 1
+pygame.mixer.init()
 
 def init():
 
@@ -12,19 +15,26 @@ def init():
         for file in files:
             if file.endswith(".mp3"):
                 songs.append(os.path.join(root, file))
-    playsongs(songs)
 
-def playsongs(songs):
+    while songs:
+        play_songs(songs)
 
-    random.shuffle(songs)
-    mixer.init()
-    mixer.music.load(songs[0])
-    mixer.music.play(0)
-    for song in songs:
-        mixer.music.queue(song)
+    print("Queue is empty!")
 
-    while mixer.music.get_busy():
-        time.Clock().tick(100)
+def play_songs(songs):
+
+    curr_song = random.choice(songs)
+    #print("Now playing: " + curr_song)
+    pygame.mixer.music.load(curr_song)
+    pygame.mixer.music.play()
+
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(100)
+
+    pygame.mixer.music.set_endevent(SONG_END)
+
+    if pygame.mixer.music.get_endevent() == SONG_END:
+        songs.remove(curr_song)
 
 
 if __name__ == '__main__':
