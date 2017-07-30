@@ -2,4 +2,4 @@
 
 A no-fuss CLI music player.
 
-Run `> python music.py <_folderpath_>` to play all your songs.
+Run `> python music.py <folderpath>` to play all your songs.
