@@ -75,6 +75,7 @@ def pausesong(event):
         pause = False
     else:
         pygame.mixer.music.unpause()
+        pause = True
 
 
 def nextsong(event):
