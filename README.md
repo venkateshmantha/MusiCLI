@@ -12,5 +12,3 @@ A no-fuss CLI music player.
 <p align="center"> 
 <img src="MusiCLI.PNG">
 </p>
-
-![MusiCLI](MusiCLI.PNG)
