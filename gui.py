@@ -4,50 +4,56 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
+root.attributes('-alpha', 0.9)
+root.configure(bg="#191a1c")
 root.wm_title("MusiCLI")
 index = 0
 count = 0
 pause = True
 
 topframe = Frame(root)
-topframe.pack()
-bottomframe = Frame(root)
-bottomframe.pack(side=BOTTOM)
+topframe.configure(bg="#191a1c")
+topframe.pack(fill=X)
 
-label = Label(topframe, text="Jukebox")
-label.pack()
+midframe = Frame(root, height=10, width=80)
+midframe.configure(bg="#191a1c")
+midframe.pack()
 
-listbox = Listbox(topframe, width=80)
-listbox.pack(fill=X, side=BOTTOM)
+bottomframe = Frame(root, height=15, width=80)
+bottomframe.configure(bg="#191a1c")
+bottomframe.pack()
+
+listbox = Listbox(topframe, width=100)
+listbox.configure(bg="#191a1c", fg="#14a001")
+listbox.pack(fill=X)
 
 songs = []
 
 v = StringVar()
-songlabel = Label(bottomframe, textvariable=v, width=80)
+songlabel = Label(midframe, textvariable=v, width=80)
+songlabel.configure(bg="#191a1c", fg="#14a001")
 songlabel.pack()
 
-openbutton = Button(bottomframe, text="Open")
-openbutton.pack(side=LEFT, ipadx=25)
+openbutton = Button(midframe, text="Open")
+openbutton.configure(bg="#191a1c", fg="#14a001")
+openbutton.pack(side=LEFT, ipadx=50)
 
-previousbutton = Button(bottomframe, text="Prev")
-previousbutton.pack(side=LEFT, ipadx=30)
+previousbutton = Button(midframe, text="Prev")
+previousbutton.configure(bg="#191a1c", fg="#14a001")
+previousbutton.pack(side=LEFT, ipadx=50)
 
-playbutton = Button(bottomframe, text="Play")
-playbutton.pack(side=LEFT, ipadx=30)
+pausebutton = Button(midframe, text="Play/Pause")
+pausebutton.configure(bg="#191a1c", fg="#14a001")
+pausebutton.pack(side=LEFT, ipadx=50)
 
-stopbutton = Button(bottomframe, text="Stop")
-stopbutton.pack(side=LEFT, ipadx=30)
-
-nextbutton = Button(bottomframe, text="Next")
-nextbutton.pack(side=LEFT, ipadx=30)
-
-pausebutton = Button(bottomframe, text="Pause")
-pausebutton.pack(side=LEFT, ipadx=30)
+nextbutton = Button(midframe, text="Next")
+nextbutton.configure(bg="#191a1c", fg="#14a001")
+nextbutton.pack(side=LEFT, ipadx=50)
 
 
 def updatelabel():
     global index
-    v.set(songs[index])
+    v.set("Now playing: " + songs[index])
 
 
 def pausesong(event):
@@ -58,10 +64,6 @@ def pausesong(event):
         pause = False
     else:
         pygame.mixer.music.unpause()
-
-
-def playsong(event):
-    pygame.mixer.music.play()
 
 
 def nextsong(event):
@@ -91,10 +93,6 @@ def previoussong(event):
         print("")
 
 
-def stopsong(event):
-    pygame.mixer.music.stop()
-
-
 def directorychooser():
     global count
     global index
@@ -106,6 +104,8 @@ def directorychooser():
         index = 0
 
         del songs[:]
+        global pause
+        pause = True
         os.chdir(directory)
 
         for file in os.listdir(directory):
@@ -143,10 +143,8 @@ def choosedirectory(event):
 
 
 openbutton.bind("<Button-1>", choosedirectory)
-playbutton.bind("<Button-1>", playsong)
 nextbutton.bind("<Button-1>", nextsong)
 previousbutton.bind("<Button-1>", previoussong)
-stopbutton.bind("<Button-1>", stopsong)
 pausebutton.bind("<Button-1>", pausesong)
 
 try:
