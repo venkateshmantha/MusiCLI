@@ -9,4 +9,8 @@ A no-fuss CLI music player.
 
 - Alternately, run `python music.py <folderpath>` to play all your songs from the command line undisturbed.
 
+<p align="center"> 
+<img src="MusiCLI.PNG">
+</p>
+
 ![MusiCLI](MusiCLI.PNG)
