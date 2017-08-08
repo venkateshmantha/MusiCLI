@@ -9,3 +9,6 @@ A no-fuss CLI music player.
 
 - Alternately, run `python music.py <folderpath>` to play all your songs from the command line undisturbed.
 
+## License
+
+This project is licensed under the MIT License.
