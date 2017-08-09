@@ -1,3 +1,6 @@
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/venkateshmantha/MusiCLI/blob/master/LICENSE)
+
 # MusiCLI
 
 A no-fuss CLI music player.
