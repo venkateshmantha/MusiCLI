@@ -14,7 +14,7 @@ A no-fuss CLI music player.
 
 ## TODO
 
-- [ ] Implement PlayAll and Queue features
+- [ ] Implement PlayAll, Replay, Shuffle and Queue features
 
 ## License
 
